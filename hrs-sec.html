@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hrs to sec</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(4, 42, 43);
+}
+
+.container {
+    background-color:cornflowerblue;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: rgb(40, 38, 38);
+}
+
+label {
+    font-size: 18px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0b3013;
+}
+
+button#resetBtn {
+    background-color: #610b14;
+}
+
+button#resetBtn:hover {
+    background-color: #c82333;
+}
+
+#result {
+    margin-top: 10px;
+    font-size: 18px;
+    color:#0b3013
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Convert Hours to Seconds</h1>
+        <label for="hours">Enter Hours:</label>
+        <input type="number" id="hours" placeholder="Enter hours" min="0">
+        <p id="result"></p>
+        <button id="convertBtn">Enter</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script>
+        const convertBtn = document.getElementById('convertBtn');
+const resetBtn = document.getElementById('resetBtn');
+const result = document.getElementById('result');
+const hoursInput = document.getElementById('hours');
+
+function convertHoursToSeconds() {
+    const hours = parseFloat(hoursInput.value);
+    
+    if (isNaN(hours) || hours < 0) {
+        result.textContent = "Please enter a valid number of hours!";
+    } else {
+        const seconds = hours * 3600;
+        result.textContent = `${hours} hour's is equal to ${seconds} second's.`;
+    }
+}
+
+function reset() {
+    hoursInput.value = '';
+    result.textContent = '';
+}
+convertBtn.addEventListener('click', convertHoursToSeconds);
+resetBtn.addEventListener('click', reset);
+
+    </script>
+</body>
+</html>
