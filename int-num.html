@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Box Addition</title>
-    <style>
-        body {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Box Addition</title>
+  <style>
+    body {
     font-family: Arial, sans-serif;
     background-image: url(images/leaves-6975462_1280.png);
     display: flex;
@@ -71,67 +72,61 @@ button#resetBtn {
 button#resetBtn:hover {
     background-color: #0056b3;
 }
-
-    </style>
+  </style>
 </head>
 <body>
+
     <div class="container">
         <h2>Addition of Two Numbers</h2>
-        <label for="num1">First Number:</label>
-        <input type="text" id="num1">
+        <label for="num1Input">First Number:</label>
+        <input type="text" id="num1Input">
         <br>
 
-        <label for="num2">Second Number:</label>
-        <input type="text" id="num2">
+        <label for="num2Input">Second Number:</label>
+        <input type="text" id="num2Input">
         <br>
 
-        <label for="result">Result:</label>
-        <input type="text" id="result" readonly>
+        <label for="resultInput">Result:</label>
+        <input type="text" id="resultInput" >
         <br>
 
-        <button id="enterBtn">Enter</button>
+        <button id="submitBtn">Enter</button>
         <button id="resetBtn">Reset</button>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const num1Input = document.getElementById("num1");
-    const num2Input = document.getElementById("num2");
-    const resultInput = document.getElementById("result");
-    const resetBtn = document.getElementById("resetBtn");
-    const enterBtn = document.getElementById("enterBtn");
 
-    num1Input.addEventListener("input", handleInput);
-    num2Input.addEventListener("input", handleInput);
-    resetBtn.addEventListener("click", resetFields);
-    enterBtn.addEventListener("click", calculateSum);
-
+  <script>
+    document.getElementById("submitBtn").addEventListener("click", handleInput);
+    document.getElementById("resetBtn").addEventListener("click", resetInputs);
     function handleInput() {
-        const num1 = parseFloat(num1Input.value);
-        const num2 = parseFloat(num2Input.value);
-        if (isNaN(num1)) {
-            resultInput.value = "";
-            return;
-        }
-        if (isNaN(num2)) {
-            resultInput.value = "NaN";
-        }
+    const num1Input = document.getElementById("num1Input").value;
+    const num2Input = document.getElementById("num2Input").value;
+    const isInvalidInput1 = /[a-zA-Z]/.test(num1Input);
+    const isInvalidInput2 = /[a-zA-Z]/.test(num2Input);
+
+    if (isInvalidInput1 || isInvalidInput2) {
+        document.getElementById("resultInput").value = "NaN";
+        return;
     }
-    function calculateSum() {
-        const num1 = parseFloat(num1Input.value);
-        const num2 = parseFloat(num2Input.value);
-        if (!isNaN(num1) && !isNaN(num2)) {
-            resultInput.value = num1 + num2;
-        } else {
-            resultInput.value = "NaN";
-        }
+    const num1 = parseFloat(num1Input);
+    const num2 = parseFloat(num2Input);
+    if (isNaN(num1)) {
+        document.getElementById("resultInput").value = "NaN";
+        return;
     }
-    function resetFields() {
-        num1Input.value = "";
-        num2Input.value = "";
-        resultInput.value = "";
+
+    if (isNaN(num2)) {
+        document.getElementById("resultInput").value = "NaN";
+        return;
     }
-});
-    </script>
+    document.getElementById("resultInput").value = num1 + num2;
+    }
+    function resetInputs() {
+    document.getElementById("num1Input").value = "";
+    document.getElementById("num2Input").value = "";
+    document.getElementById("resultInput").value = "";
+    }
+
+  </script>
 </body>
 </html>

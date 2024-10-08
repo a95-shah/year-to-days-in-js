@@ -78,21 +78,17 @@ button:hover {
     </div>
     <script>
         function capitalizeName() {
-    // Get the first and last name entered by the user
     let firstName = document.getElementById("firstName").value;
     let lastName = document.getElementById("lastName").value;
 
-    // Capitalize the first letter of the first and last name
     let capitalizedFirstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
     let capitalizedLastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
 
-    // Display the result
     document.getElementById("output").textContent = 
         "Your name is: " + capitalizedFirstName + " " + capitalizedLastName;
 }
 
 function resetForm() {
-    // Reset the input fields and output
     document.getElementById("firstName").value = "";
     document.getElementById("lastName").value = "";
     document.getElementById("output").textContent = "";
