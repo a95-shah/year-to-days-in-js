@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Picker</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  /* background-color:#3498db; */
+  background-image: url(images/leaves-6975462_1280.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color:#126063;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: green;
+}
+
+p {
+  font-size: 16px;
+  margin-top: 20px;
+  color: azure;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="color: rgb(39, 192, 39);">Random Array Generator</h1>
+    <button onclick="generateArray()">Generate Random Array</button>
+    <button onclick="resetArray()">Reset</button>
+    <p id="array-output"></p>
+    <p id="first-last-output"></p>
+  </div>
+  <script>
+    function generateArray() {
+  let randomLength = Math.floor(Math.random() * 6) + 5;
+  let randomArray = [];
+
+  for (let i = 0; i < randomLength; i++) {
+    randomArray.push(Math.floor(Math.random() * 100) + 1);
+  }
+  document.getElementById("array-output").textContent = "Generated Array: " + randomArray;
+  let firstLast = pickFirstAndLast(randomArray);
+  document.getElementById("first-last-output").textContent = "First Element: " + firstLast.first + " | Last Element: " + firstLast.last;
+}
+
+function pickFirstAndLast(arr) {
+  if (arr.length === 0) {
+    return { first: null, last: null };
+  }
+  return { first: arr[0], last: arr[arr.length - 1] };
+}
+function resetArray() {
+  document.getElementById("array-output").textContent = "";
+  document.getElementById("first-last-output").textContent = "";
+}
+
+  </script>
+</body>
+</html>

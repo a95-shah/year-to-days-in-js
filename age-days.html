@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year to days converter</title>
+    <style>
+        body{
+    font-family: Arial, sans-serif;
+    background-image: url(images/leaves-6975462_1280.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* background-color: #517158; */
+   
+    
+}
+.converter-container{
+    background-color:#126063;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color:white;
+}
+h1{
+    margin-bottom: 20px;
+    color: rgb(199, 125, 125);
+}
+input[type="date"]{
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button{
+    padding: 10px 20px;
+    background-color: #09220e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #6c9f77;
+}
+#result{
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <div class="converter-container">
+        <h1>Birthdate to Days Converter</h1>
+        
+        <label for="birthDate">Select your birthdate:</label><br>
+        <input type="date" id="birthDate"><br>
+        
+        <button onclick="convertDateToDays()">Calculate Days</button>
+        <button class="reset-btn" onclick="reset()">Reset</button>
+        
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertDateToDays() {
+    const birthDate = new Date(document.getElementById('birthDate').value);
+    const currentDate = new Date();
+    
+    if (!isNaN(birthDate.getTime()) && birthDate <= currentDate) {  
+        const timeDifference = currentDate - birthDate;
+        const ageInDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));  
+        
+        document.getElementById('result').innerText = 
+            `You are: ${ageInDays} days old.`;
+    } else {
+        document.getElementById('result').innerText = 
+            "Please select a valid birthdate.";
+    }
+}
+function reset() {
+    document.getElementById('birthDate').value = ''; 
+    document.getElementById('result').innerText = '';  
+}
+
+
+
+
+    </script>
+</body>
+</html>
+

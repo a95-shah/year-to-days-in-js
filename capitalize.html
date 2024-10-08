@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capitalize First and Last Name</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-image: url(images/leaves-6975462_1280.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color:#126063;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    margin-top: 10px;
+    width: 80%;
+    font-size: 16px;
+}
+
+.buttons {
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#btn-set{
+    background-color:  #007BFF;
+}
+#btn-set:hover{
+    background-color: #112e4e;
+}
+
+button:hover {
+    background-color: #112e4e;
+}
+
+#output {
+    margin-top: 20px;
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+}
+
+    </style>
+<body>
+    <div class="container">
+        <h2>Enter Your First and Last Name in Lowercase</h2>
+        <input type="text" id="firstName" placeholder="Enter your first name" />
+        <input type="text" id="lastName" placeholder="Enter your last name" />
+        <div class="buttons">
+            <button onclick="capitalizeName()">Submit</button>
+            <button id="btn-set" onclick="resetForm()">Reset</button>
+        </div>
+        <p id="output"></p>
+    </div>
+    <script>
+        function capitalizeName() {
+    // Get the first and last name entered by the user
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+
+    // Capitalize the first letter of the first and last name
+    let capitalizedFirstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+    let capitalizedLastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
+
+    // Display the result
+    document.getElementById("output").textContent = 
+        "Your name is: " + capitalizedFirstName + " " + capitalizedLastName;
+}
+
+function resetForm() {
+    // Reset the input fields and output
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("output").textContent = "";
+}
+
+    </script>
+</body>
+</html>
