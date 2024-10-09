@@ -68,8 +68,8 @@ button:hover {
 <body>
     <div class="container">
         <h2>Enter Your First and Last Name in Lowercase</h2>
-        <input type="text" id="firstName" placeholder="Enter your first name" />
-        <input type="text" id="lastName" placeholder="Enter your last name" />
+        <input type="text" id="firstName" placeholder="Enter name" />
+        <!-- <input type="text" id="lastName" placeholder="Enter your last name" /> -->
         <div class="buttons">
             <button onclick="capitalizeName()">Submit</button>
             <button id="btn-set" onclick="resetForm()">Reset</button>
@@ -78,21 +78,29 @@ button:hover {
     </div>
     <script>
         function capitalizeName() {
-    let firstName = document.getElementById("firstName").value;
-    let lastName = document.getElementById("lastName").value;
+        let firstName = document.getElementById("firstName").value;
+        // let lastName = document.getElementById("lastName").value;
+        let name = firstName.split(" ")
+        console.log(name);
+        let arr = []
+        for(const item of  name){
+            let allnames = item.charAt(0).toUpperCase() + item.slice(1) 
+             arr.push(allnames)
+             document.getElementById("output").textContent = arr.join(' ')
+           
+        }
+        
+        // let capitalizedFirstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+        // let capitalizedLastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
 
-    let capitalizedFirstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
-    let capitalizedLastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
+      
+    }
 
-    document.getElementById("output").textContent = 
-        "Your name is: " + capitalizedFirstName + " " + capitalizedLastName;
-}
-
-function resetForm() {
-    document.getElementById("firstName").value = "";
-    document.getElementById("lastName").value = "";
-    document.getElementById("output").textContent = "";
-}
+    function resetForm() {
+        document.getElementById("firstName").value = "";
+        // document.getElementById("lastName").value = "";
+        document.getElementById("output").textContent = "";
+    }
 
     </script>
 </body>
